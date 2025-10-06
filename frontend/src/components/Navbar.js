@@ -39,7 +39,7 @@ const Navbar = () => {
   };
 
   const drawerContent = (
-    <Box sx={{ width: 250, backgroundColor: '#3f51b5', height: '100%', color: 'white' }} role="presentation">
+    <Box sx={{ width: 250, backgroundColor: '#5a5fcf', height: '100%', color: 'white' }} role="presentation">
       <List>
         <ListItem button component={Link} to="/" selected={isActive('/')} onClick={handleDrawerToggle}>
           <ListItemText primary="Home" sx={{ color: isActive('/') ? '#ff9800' : 'white' }} />
@@ -72,7 +72,7 @@ const Navbar = () => {
 
   return (
     <>
-      <AppBar position="static" sx={{ backgroundColor: '#3f51b5', padding: '0.5rem 0' }}>
+      <AppBar position="static" sx={{ backgroundColor: '#5a5fcf', padding: '0.5rem 0' }}>
         <Toolbar>
           <Typography
             variant="h6"
