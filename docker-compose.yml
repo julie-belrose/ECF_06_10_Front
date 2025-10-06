@@ -9,20 +9,63 @@ services:
       - SPRING_DATASOURCE_USERNAME=root
       - SPRING_DATASOURCE_PASSWORD=password
       - SPRING_DATA_MONGODB_URI=mongodb://mongodb:27017/employee_management
-    
+    depends_on:
+      mysql:
+        condition: service_healthy
+      mongodb:
+        condition: service_started
+    networks:
+      - app-network
+    restart: unless-stopped
 
+  #config react
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: frontend-app
+    ports:
+      - "80:80"
+    networks:
+      - app-network
+    restart: unless-stopped
 
   mysql:
     image: mysql:8.0
+    container_name: app-mysql
     environment:
       MYSQL_ROOT_PASSWORD: password
       MYSQL_DATABASE: employee_management
     ports:
       - "3306:3306"
-    
+    volumes:
+      - mysql-data:/var/lib/mysql
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost" ]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 10s
+    networks:
+      - app-network
+    restart: unless-stopped
+
 
   mongodb:
     image: mongo:6.0
+    container_name: app-mongodb
     ports:
       - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+    networks:
+      - app-network
+    restart: unless-stopped
     
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  mysql-data:
+  mongo-data:

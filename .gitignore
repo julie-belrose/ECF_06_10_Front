@@ -24,3 +24,4 @@ yarn-error.log*
 dist/
 .mvn/
 .idea/
+backend/target/
