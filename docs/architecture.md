@@ -31,6 +31,49 @@ Security :
 - Concerne la gestion des JWT, les requêtes qui concerne l'authentification et l'authorisation
 - Une custom exception pour gérer les erreurs de userName  lors du chargement 
 
+### `example_config.properties`
+Fichier de configuration Spring Boot incluant les parametres de connexion aux bases.
+
+## Technologies
+
+- **Spring Boot** : framework pour construire des applications de production en Java.
+- **MySQL** : base de donnees relationnelle pour les donnees structurees.
+- **MongoDB** : base de donnees NoSQL pour le stockage non relationnel.
+
 ---
 
 ## Frontend
+
+### Components
+- Dashboard : Affichage des statistiques et graphiques
+#### List
+- EmployeeList : Liste des employés avec recherche et pagination (utilise GenericList)
+- DepartmentList : Liste des départements avec recherche et pagination
+#### Formulaire 
+- EmployeeForm : Formulaire d'ajout/édition d'employé
+- DepartmentForm : Formulaire d'ajout/édition de département
+
+### Generic
+- GenericList : Composant réutilisable pour listes avec pagination et recherche
+
+## shared 
+- Navbar : Navigation principale avec authentification
+
+#### pages 
+- Login/Register : Gestion de l'authentification
+- Profile : Page profil utilisateur
+- LandingPage
+- NotFoundPage
+
+### Services
+- **employeeService** : API calls pour les employés de notre backend java
+- **departmentService** : API calls pour les départements de notre backend java
+
+### Tests
+
+
+### Technologies
+- **React** : Framework frontend
+- **Material-UI** : Composants UI
+- **React Router** : Navigation
+- **Chart.js** : Graphiques du dashboard
