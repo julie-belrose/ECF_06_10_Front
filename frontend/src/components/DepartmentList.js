@@ -117,7 +117,7 @@ const DepartmentList = () => {
     <Box>
       <Snackbar open={showSnackbar} onClose={handleCloseSnackbar} anchorOrigin={{ vertical: 'top', horizontal: 'center' }} sx={{ mt: 9 }}>
         <Alert onClose={handleCloseSnackbar} severity="warning" sx={{ width: '100%' }}>
-          You must be logged in to access the employee list.{' '}
+          You must be logged in to access the department list.{' '}
           <span
             onClick={handleLoginRedirect}
             style={{
